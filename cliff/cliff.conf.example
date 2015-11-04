@@ -3,7 +3,7 @@
 [path]
 
 ; Path of caffe's python interface
-caffe_python=/home/ztc/tools/caffe-rc2/python
+caffe_python=/path/to/caffe/python
 
 ; Path of selective_search_ijcv_with_python
-selective_search=/home/ztc/tools
+selective_search=/path/to
