@@ -1,8 +1,8 @@
 """
-    Setup configuration for Cliff.
+    This module is used to setup configuration for Cliff.
 """
 
-# pylint: disable=too-few-public-methods
+# pylint: disable=R0903
 
 import os
 import sys
