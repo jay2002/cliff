@@ -1,0 +1,9 @@
+; Configuration for Cliff
+
+[path]
+
+; Path of caffe's python interface
+caffe_python=/home/ztc/tools/caffe-rc2/python
+
+; Path of selective_search_ijcv_with_python
+selective_search=/home/ztc/tools
