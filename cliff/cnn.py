@@ -9,11 +9,10 @@
 
 import os
 import numpy as np
-import caffe
 import cliff.config
 
 
-def caffe(images, proposals, model, layer, device=0, batch_size=128):
+def caffe_cnn(images, proposals, model, layer, device=0, batch_size=128):
     """ Extract CNN features based on Caffe models
     :param images: image names. The function extracts features for each
         image.
@@ -37,6 +36,8 @@ def caffe(images, proposals, model, layer, device=0, batch_size=128):
     :return: image features
     :rtype: list, each element is a n-by-m ndarray, m is feature dimension
     """
+
+    import caffe
 
     if device < 0:
         caffe.set_cpu_mode()
@@ -82,7 +83,7 @@ def caffe(images, proposals, model, layer, device=0, batch_size=128):
         else:
             windows = proposals[i]
         for window in windows:
-            net.blobs['data'].data[...] = transformer.preprocess(
+            net.blobs['data'].data[n_features] = transformer.preprocess(
                 'data', image[window[0]:window[2], window[1]:window[3]])
             n_features = n_features + 1
             if n_features == batch_size:
