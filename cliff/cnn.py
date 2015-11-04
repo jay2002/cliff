@@ -13,8 +13,8 @@ import caffe
 import cliff.config
 
 
-def cnn(images, proposals, model, layer, device=0, batch_size=128):
-    """ Extract CNN features
+def caffe(images, proposals, model, layer, device=0, batch_size=128):
+    """ Extract CNN features based on Caffe models
     :param images: image names. The function extracts features for each
         image.
     :type images: list, each element is a string
