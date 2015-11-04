@@ -13,29 +13,29 @@ import caffe
 import cliff.config
 
 
-def cnn(images, proposals, model, layer, device=0, batch_size=128):
-    """ Extract CNN features
-    param images: image names. The function extracts features for each
+def caffe(images, proposals, model, layer, device=0, batch_size=128):
+    """ Extract CNN features based on Caffe models
+    :param images: image names. The function extracts features for each
         image.
-    type images: list, each element is a string
-    param proposals: proposals or None. The function extracts features for
+    :type images: list, each element is a string
+    :param proposals: proposals or None. The function extracts features for
         each proposal of each image. If it is None, the function will extract
         global features.
-    type proposals: None, or list, each element is a n-by-4 ndarray, n is
+    :type proposals: None, or list, each element is a n-by-4 ndarray, n is
         number of proposals
-    param model: the CNN model name used to extract features
-    type model: string
-    param layer: layer in the CNN model. The function will extract features
+    :param model: the CNN model name used to extract features
+    :type model: string
+    :param layer: layer in the CNN model. The function will extract features
         from that layer
-    type layer: string
-    param ravel: whether to ravel the features to a vector
-    type ravel: boolean
-    param device: gpu device number. If cpu is used, it should be a negtive
+    :type layer: string
+    :param ravel: whether to ravel the features to a vector
+    :type ravel: boolean
+    :param device: gpu device number. If cpu is used, it should be a negtive
         number.
-    param batch_size: number of features extracted at one pass
-    type batch_size: integer
-    return: image features
-    rtype: list, each element is a n-by-m ndarray, m is feature dimension
+    :param batch_size: number of features extracted at one pass
+    :type batch_size: integer
+    :return: image features
+    :rtype: list, each element is a n-by-m ndarray, m is feature dimension
     """
 
     if device < 0:
