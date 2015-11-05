@@ -16,7 +16,7 @@ def caffe_cnn(images, proposals, model, layer, device=0, batch_size=128):
     """ Extract CNN features based on Caffe models
     :param images: image names. The function extracts features for each
         image.
-    :type images: list, each element is a string
+    :type images: list. Each element is a string
     :param proposals: proposals or None. The function extracts features for
         each proposal of each image. If it is None, the function will extract
         global features.
@@ -34,7 +34,7 @@ def caffe_cnn(images, proposals, model, layer, device=0, batch_size=128):
     :param batch_size: number of features extracted at one pass
     :type batch_size: integer
     :return: image features
-    :rtype: list, each element is a n-by-m ndarray, m is feature dimension
+    :rtype: list. Each element is a n-by-m ndarray, m is feature dimension
     """
 
     import caffe
