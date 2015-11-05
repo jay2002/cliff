@@ -59,5 +59,8 @@ target/
 # Backup
 *~
 
+# Features
+*.pkl
+
 # Configuration
 cliff.conf
