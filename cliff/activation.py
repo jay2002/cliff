@@ -1,5 +1,5 @@
 """
-    This module includes activation functions.
+    This module includes activation functions
 """
 
 
