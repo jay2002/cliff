@@ -2,6 +2,7 @@
     This module includes normalization functions
 """
 
+import numpy as np
 
 def l2(features):
     """ l2 normalization
