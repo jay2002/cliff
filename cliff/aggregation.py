@@ -47,8 +47,8 @@ def vlad_transform(features, kmeans):
             for j in range(transformed_feat.shape[0]):
                 norm = np.linalg.norm(transformed_feat[j])
                 if norm > 0:
-                    transformed_feat[j] = transformed_feat[j]
+                    transformed_feat[j] = transformed_feat[j] / norm
                 else:
-                    transformed_feat[j] = 0
+                    transformed_feat[j] = 0 * transformed_feat[j]
         transformed_features.append(transformed_feat)
     return transformed_features
