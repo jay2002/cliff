@@ -38,16 +38,17 @@ def vlad_transform(features, kmeans):
     for i, feat in enumerate(features):
         print 'No.', i
         transformed_feat = np.zeros(kmeans.cluster_centers_.shape)
-        labels = kmeans.predict(feat)
-        for j, label in enumerate(labels):
-            transformed_feat[label] = \
-                transformed_feat[label] + \
-                feat[j] - kmeans.cluster_centers_[label]
-        for j in range(transformed_feat.shape[0]):
-            norm = np.linalg.norm(transformed_feat[j])
-            if norm > 0:
-                transformed_feat[j] = transformed_feat[j]
-            else:
-                transformed_feat[j] = 0
+        if feat is not None:
+            labels = kmeans.predict(feat)
+            for j, label in enumerate(labels):
+                transformed_feat[label] = \
+                    transformed_feat[label] + \
+                    feat[j] - kmeans.cluster_centers_[label]
+            for j in range(transformed_feat.shape[0]):
+                norm = np.linalg.norm(transformed_feat[j])
+                if norm > 0:
+                    transformed_feat[j] = transformed_feat[j]
+                else:
+                    transformed_feat[j] = 0
         transformed_features.append(transformed_feat)
     return transformed_features
