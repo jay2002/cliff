@@ -70,7 +70,7 @@ def caffe_cnn(images, proposals, model, layer, device=0, batch_size=128):
     elif model == 'VGG19':
         net = caffe.Net(os.path.join(caffe_root, 'models',
                                      'VGG_ILSVRC_19_layers',
-                                     'deploy.prototxt'),
+                                     'VGG_ILSVRC_19_layers_deploy.prototxt'),
                         os.path.join(caffe_root, 'models',
                                      'VGG_ILSVRC_19_layers',
                                      'VGG_ILSVRC_19_layers.caffemodel'),
