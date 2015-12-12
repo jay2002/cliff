@@ -67,6 +67,21 @@ def caffe_cnn(images, proposals, model, layer, device=0, batch_size=128):
                              .mean(1).mean(1))
         transformer.set_raw_scale('data', 255)
         transformer.set_channel_swap('data', (2, 1, 0))
+    elif model == 'VGG19':
+        net = caffe.Net(os.path.join(caffe_root, 'models',
+                                     'VGG_ILSVRC_19_layers',
+                                     'deploy.prototxt'),
+                        os.path.join(caffe_root, 'models',
+                                     'VGG_ILSVRC_19_layers',
+                                     'VGG_ILSVRC_19_layers.caffemodel'),
+                        caffe.TEST)
+        net.blobs['data'].reshape(batch_size, 3, 224, 224)
+        transformer = caffe.io.Transformer(
+            {'data': net.blobs['data'].data.shape})
+        transformer.set_transpose('data', (2, 0, 1))
+        transformer.set_mean('data', np.array([103.939, 116.779, 123.68]))
+        transformer.set_raw_scale('data', 255)
+        transformer.set_channel_swap('data', (2, 1, 0))
     else:
         print 'Unknown CNN model.'
         return None
